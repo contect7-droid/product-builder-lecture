@@ -2,7 +2,7 @@ const generateBtn = document.getElementById('generate-btn');
 const lottoNumbersContainer = document.getElementById('lotto-numbers');
 const themeToggle = document.getElementById('theme-toggle');
 
-// Check for saved theme preference
+// Theme logic
 const currentTheme = localStorage.getItem('theme');
 if (currentTheme === 'dark') {
     document.body.classList.add('dark-mode');
@@ -16,6 +16,7 @@ themeToggle.addEventListener('click', () => {
     themeToggle.textContent = isDarkMode ? 'Light Mode' : 'Dark Mode';
 });
 
+// Lotto logic
 generateBtn.addEventListener('click', () => {
     lottoNumbersContainer.innerHTML = '';
     const numbers = new Set();
@@ -43,3 +44,47 @@ function getRandomColor() {
     }
     return color;
 }
+
+// Reactions logic
+const reactionButtons = document.querySelectorAll('.reaction-btn');
+let reactionsData = JSON.parse(localStorage.getItem('reactions')) || {
+    upvote: 0, funny: 0, love: 1, surprised: 0, angry: 0, sad: 0
+};
+let userVoted = localStorage.getItem('userVoted');
+
+function updateReactionsUI() {
+    reactionButtons.forEach(btn => {
+        const type = btn.dataset.type;
+        btn.querySelector('.count').textContent = reactionsData[type];
+        if (userVoted === type) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+reactionButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const type = btn.dataset.type;
+        
+        if (userVoted === type) {
+            // Unvote
+            reactionsData[type]--;
+            userVoted = null;
+        } else {
+            // Change vote or first vote
+            if (userVoted) {
+                reactionsData[userVoted]--;
+            }
+            reactionsData[type]++;
+            userVoted = type;
+        }
+        
+        localStorage.setItem('reactions', JSON.stringify(reactionsData));
+        localStorage.setItem('userVoted', userVoted || '');
+        updateReactionsUI();
+    });
+});
+
+updateReactionsUI();
