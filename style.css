@@ -101,45 +101,46 @@ nav {
     color: var(--accent);
 }
 
-.nav-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-.icon-btn {
+.lang-btn {
     background: none;
-    border: none;
-    color: var(--text-main);
-    font-size: 1.2rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-weight: 700;
     cursor: pointer;
-    padding: 0.5rem;
-    border-radius: 50%;
-    transition: background 0.3s;
+    font-size: 0.8rem;
+    transition: all 0.3s;
 }
 
-.icon-btn:hover {
-    background: rgba(120, 120, 120, 0.1);
+.lang-btn:hover {
+    background: var(--accent);
+    color: white;
 }
 
-/* Page Transitions */
-.page {
-    display: none;
-    max-width: 1000px;
-    margin: 100px auto 0;
-    padding: 4rem 2rem;
-    min-height: calc(100vh - 200px);
+#result-display {
+    margin-top: 2rem;
+    animation: fadeInUp 0.5s ease-out;
 }
 
-.page.active {
-    display: block;
-    animation: fadeIn 0.6s ease-out;
-}
-
-@keyframes fadeIn {
+@keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+.prediction-box {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 400px;
+}
+
+.bars-container {
+    max-width: 400px;
+    margin: 2rem auto;
+}
+
+.hidden { display: none !important; }
 
 /* Hero Section */
 #home {

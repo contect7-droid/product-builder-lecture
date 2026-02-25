@@ -19,14 +19,14 @@
         <nav>
             <div class="logo" onclick="navigateTo('home')">Luck<span>&</span>AI</div>
             <ul class="nav-links">
-                <li><a href="#lotto" onclick="navigateTo('lotto')">로또번호</a></li>
-                <li><a href="#animal" onclick="navigateTo('animal')">동물상</a></li>
-                <li><a href="#guide" onclick="navigateTo('guide')">이용가이드</a></li>
-                <li><a href="#contact" onclick="navigateTo('contact')">문의하기</a></li>
+                <li><a href="#lotto" onclick="navigateTo('lotto')" data-i18n="nav_lotto">로또번호</a></li>
+                <li><a href="#animal" onclick="navigateTo('animal')" data-i18n="nav_animal">동물상</a></li>
+                <li><a href="#guide" onclick="navigateTo('guide')" data-i18n="nav_guide">이용가이드</a></li>
+                <li><a href="#contact" onclick="navigateTo('contact')" data-i18n="nav_contact">문의하기</a></li>
             </ul>
             <div class="nav-actions">
+                <button id="lang-btn" class="lang-btn">EN</button>
                 <button id="theme-toggle" class="icon-btn"><i class="fas fa-moon"></i></button>
-                <div class="mobile-menu-btn"><i class="fas fa-bars"></i></div>
             </div>
         </nav>
     </header>
@@ -35,11 +35,11 @@
         <!-- 홈 페이지 -->
         <section id="home" class="page active">
             <div class="hero-content">
-                <h1 class="animate-up">당신의 오늘을 특별하게</h1>
-                <p class="animate-up delay-1">AI 분석부터 행운의 번호까지, 지금 바로 시작해보세요.</p>
+                <h1 class="animate-up" data-i18n="hero_title">당신의 오늘을 특별하게</h1>
+                <p class="animate-up delay-1" data-i18n="hero_desc">AI 분석부터 행운의 번호까지, 지금 바로 시작해보세요.</p>
                 <div class="hero-btns animate-up delay-2">
-                    <button class="primary-btn" onclick="navigateTo('lotto')">로또 번호 받기</button>
-                    <button class="secondary-btn" onclick="navigateTo('animal')">동물상 테스트</button>
+                    <button class="primary-btn" onclick="navigateTo('lotto')" data-i18n="btn_get_lotto">로또 번호 받기</button>
+                    <button class="secondary-btn" onclick="navigateTo('animal')" data-i18n="btn_animal_test">동물상 테스트</button>
                 </div>
             </div>
         </section>
@@ -47,62 +47,64 @@
         <!-- 로또 페이지 -->
         <section id="lotto" class="page">
             <div class="page-header">
-                <h2>행운의 로또 번호</h2>
-                <p>시스템이 추천하는 오늘의 번호 6개를 확인하세요.</p>
+                <h2 data-i18n="lotto_title">행운의 로또 번호</h2>
+                <p data-i18n="lotto_desc">시스템이 추천하는 오늘의 번호 6개를 확인하세요.</p>
             </div>
             <div class="tool-card">
                 <div id="lotto-numbers" class="lotto-numbers-container">
-                    <div class="lotto-placeholder">번호를 생성해주세요</div>
+                    <div class="lotto-placeholder" data-i18n="lotto_placeholder">번호를 생성해주세요</div>
                 </div>
-                <button id="generate-btn" class="action-btn">번호 생성하기</button>
+                <button id="generate-btn" class="action-btn" data-i18n="btn_generate">번호 생성하기</button>
             </div>
         </section>
 
         <!-- 동물상 페이지 -->
         <section id="animal" class="page">
             <div class="page-header">
-                <h2>AI 동물상 테스트</h2>
-                <p>나와 가장 닮은 동물은 무엇일까요? 사진으로 확인하세요.</p>
+                <h2 data-i18n="animal_title">AI 동물상 테스트</h2>
+                <p data-i18n="animal_desc">나와 가장 닮은 동물은 무엇일까요? 사진으로 확인하세요.</p>
             </div>
             <div class="tool-card">
                 <div class="upload-area" id="drop-area">
                     <input type="file" id="image-upload" accept="image/*" hidden>
                     <div class="upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <label for="image-upload" class="upload-label">사진 업로드 또는 드래그</label>
+                    <label for="image-upload" class="upload-label" data-i18n="upload_label">사진 업로드 또는 드래그</label>
                 </div>
                 
-                <div id="result-display" class="result-hidden">
+                <div id="result-display" style="display: none;">
                     <div class="prediction-box">
                         <img id="face-image" src="" alt="preview" class="result-img">
                         <div class="conclusion-badge" id="conclusion-text">분석 완료</div>
                     </div>
                     <div id="label-container" class="bars-container"></div>
                 </div>
-                <div id="loading-model" class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> AI 분석 중...</div>
+                <div id="loading-model" class="loading-spinner" style="display: none;">
+                    <i class="fas fa-spinner fa-spin"></i> <span data-i18n="loading">AI 분석 중...</span>
+                </div>
             </div>
         </section>
 
         <!-- 이용가이드 페이지 -->
         <section id="guide" class="page">
             <div class="page-header">
-                <h2>이용 가이드</h2>
-                <p>Luck & AI 서비스를 더 효과적으로 이용하는 방법입니다.</p>
+                <h2 data-i18n="guide_title">이용 가이드</h2>
+                <p data-i18n="guide_desc">Luck & AI 서비스를 더 효과적으로 이용하는 방법입니다.</p>
             </div>
             <div class="guide-grid">
                 <div class="guide-item">
                     <div class="guide-icon"><i class="fas fa-dice"></i></div>
-                    <h3>로또 알고리즘</h3>
-                    <p>저희 로또 번호 생성기는 순수 난수 발생 알고리즘을 사용하며, 어떠한 조작도 없는 공정한 확률을 제공합니다.</p>
+                    <h3 data-i18n="guide_1_title">로또 알고리즘</h3>
+                    <p data-i18n="guide_1_desc">저희 로또 번호 생성기는 순수 난수 발생 알고리즘을 사용하며, 어떠한 조작도 없는 공정한 확률을 제공합니다.</p>
                 </div>
                 <div class="guide-item">
                     <div class="guide-icon"><i class="fas fa-brain"></i></div>
-                    <h3>AI 모델 정보</h3>
-                    <p>동물상 분석은 수십만 장의 데이터를 학습한 신경망 모델을 통해 얼굴형과 이목구비를 분석하여 결과를 도출합니다.</p>
+                    <h3 data-i18n="guide_2_title">AI 모델 정보</h3>
+                    <p data-i18n="guide_2_desc">동물상 분석은 수십만 장의 데이터를 학습한 신경망 모델을 통해 얼굴형과 이목구비를 분석하여 결과를 도출합니다.</p>
                 </div>
                 <div class="guide-item">
                     <div class="guide-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3>데이터 보안</h3>
-                    <p>모든 사진 분석은 사용자의 기기 내에서 처리되며, 서버로 이미지가 전송되거나 저장되지 않습니다.</p>
+                    <h3 data-i18n="guide_3_title">데이터 보안</h3>
+                    <p data-i18n="guide_3_desc">모든 사진 분석은 사용자의 기기 내에서 처리되며, 서버로 이미지가 전송되거나 저장되지 않습니다.</p>
                 </div>
             </div>
         </section>
@@ -110,29 +112,29 @@
         <!-- 문의하기 페이지 -->
         <section id="contact" class="page">
             <div class="page-header">
-                <h2>문의하기</h2>
-                <p>의견이나 제휴 문의는 언제든지 환영합니다.</p>
+                <h2 data-i18n="contact_title">문의하기</h2>
+                <p data-i18n="contact_desc">의견이나 제휴 문의는 언제든지 환영합니다.</p>
             </div>
             <div class="contact-card">
                 <form action="https://formspree.io/f/xykdlnld" method="POST" id="contact-form">
                     <div class="input-group">
-                        <label>이메일</label>
+                        <label data-i18n="label_email">이메일</label>
                         <input type="email" name="email" required placeholder="contact@example.com">
                     </div>
                     <div class="input-group">
-                        <label>메시지</label>
-                        <textarea name="message" required placeholder="내용을 입력해주세요."></textarea>
+                        <label data-i18n="label_msg">메시지</label>
+                        <textarea name="message" required data-i18n="label_msg" placeholder="내용을 입력해주세요."></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">보내기</button>
+                    <button type="submit" class="submit-btn" data-i18n="btn_send">보내기</button>
                 </form>
             </div>
         </section>
 
-        <!-- 댓글창 (특정 페이지에서만 노출) -->
+        <!-- 댓글창 -->
         <section id="comments-wrapper" class="comments-section hidden">
             <div class="comments-header">
-                <h3>커뮤니티 의견</h3>
-                <p>자유롭게 소통하고 행운을 나눠보세요.</p>
+                <h3 data-i18n="comm_title">커뮤니티 의견</h3>
+                <p data-i18n="comm_desc">자유롭게 소통하고 행운을 나눠보세요.</p>
             </div>
             <div id="disqus_thread"></div>
         </section>
@@ -141,25 +143,9 @@
     <footer>
         <div class="footer-bottom">
             <p>&copy; 2026 Luck & AI. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-            </div>
         </div>
     </footer>
 
-    <script>
-        var disqus_config = function () {
-            this.page.url = window.location.href;
-            this.page.identifier = window.location.hash || 'home';
-        };
-        (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://productbuilder-yaxm8hvhhm.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
     <script defer type="text/javascript" src="/main.js"></script>
 </body>
 </html>
